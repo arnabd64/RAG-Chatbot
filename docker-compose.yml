@@ -6,7 +6,7 @@ services:
       environment:
         - OLLAMA_DEBUG=0
       ports:
-        - 11434:11434
+        - ${OLLAMA_PORT}:11434
       volumes:
         - ./ollama:/root/.ollama
 
@@ -15,11 +15,11 @@ services:
     container_name: mongo
     restart: unless-stopped
     environment:
-      - MONGODB_ROOT_USER=admin
-      - MONGODB_ROOT_PASSWORD=password
+      - MONGODB_ROOT_USER=${MONGO_USERNAME}
+      - MONGODB_ROOT_PASSWORD=${MONGO_PASSWORD}
       - MONGODB_DISABLE_SYSTEM_LOG=true
     ports:
-      - 27017:27017
+      - ${MONGO_PORT}:27017
     volumes:
       - ./mongo:/bitnami/mongodb
 
@@ -30,14 +30,14 @@ services:
     depends_on:
       - mongo
     ports:
-      - 8081:8081
+      - ${ME_PORT}:8081
     environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_USERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_PASSWORD}
       - ME_CONFIG_MONGODB_SERVER=mongo
-      - ME_CONFIG_MONGODB_PORT=27017
-      - ME_CONFIG_BASICAUTH_USERNAME=express-admin
-      - ME_CONFIG_BASICAUTH_PASSWORD=express-password
+      - ME_CONFIG_MONGODB_PORT=${MONGO_PORT}
+      - ME_CONFIG_BASICAUTH_USERNAME=${ME_USER}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${ME_PASSWORD}
     
   chroma:
     image: ghcr.io/chroma-core/chroma:latest
@@ -45,4 +45,4 @@ services:
     volumes:
       - ./chroma:/chroma/chroma
     ports:
-      - 8001:8000
+      - ${CHROMA_PORT}:8000

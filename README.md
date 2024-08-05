@@ -38,6 +38,27 @@ docker compose up -d
 
 This command will set up the necessary environment and start the services in detached mode.
 
+Before running the above command, make sure to create a `.env` file with the following environment variables.
+
+| Variable            | Description                     |
+|-------------------- |-------------------------------- |
+| `MONGO_USERNAME`    | MongoDB username                |
+| `MONGO_PASSWORD`    | MongoDB password                |
+| `MONGO_HOST`        | MongoDB host                    |
+| `MONGO_PORT`        | MongoDB port                    |
+| `OLLAMA_HOST`       | Ollama host                     |
+| `OLLAMA_PORT`       | Ollama port                     |
+| `OLLAMA_EMBED`      | Ollama embed type               |
+| `OLLAMA_LLM`        | Ollama LLM model                |
+| `OLLAMA_TIMEOUT`    | Ollama timeout (in seconds)     |
+| `OLLAMA_KEEPALIVE`  | Ollama keep-alive duration (in seconds) |
+| `CHROMA_HOST`       | Chroma DB host                  |
+| `CHROMA_PORT`       | Chroma DB port                  |
+| `ME_USER`           | Mongo Express username          |
+| `ME_PASSWORD`       | Mongo Express password          |
+| `ME_PORT`           | Mongo Express port              |
+
+
 ### Conclusion
 
 The Chatbot with RAG Capabilities is a robust solution for private and secure conversations, leveraging state-of-the-art technologies to provide an efficient and user-friendly experience.
