@@ -1,0 +1,8 @@
+langchain==0.2.10
+langchain-community==0.2.9
+langchain-text-splitters
+langchain-chroma
+langchain-mongodb
+chromadb
+pypdf
+python-dotenv
