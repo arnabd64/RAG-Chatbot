@@ -1,1 +1,6 @@
-*/
+/chroma
+/ollama
+/mongo
+__pycache__/
+documents/
+.env
